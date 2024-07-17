@@ -1,0 +1,93 @@
+---
+title: "Discrimination"
+author: "David Kane"
+format: html
+execute: 
+  echo: false
+---
+
+```{r}
+#| label: setup
+#| message: false
+
+library(tidyverse)
+library(gt)
+```
+
+## From Monday's Class
+
+### Background Information
+
+Bertrand, Marianne and Sendhil Mullainathan. 2004. "Are Emily and Greg More Employable Than Lakisha and Jamal? A Field Experiment on Labor Market Discrimination." American Economic Review, 94 (4): 991–1013. Data cleaned and discussed in "Quantitative Social Science: An Introduction" by Kosuke Imai.
+
+"We study race in the labor market by sending fictitious resumes to help-wanted ads in Boston and Chicago newspapers. To manipulate perceived race, resumes are randomly assigned African-American- or White-sounding names. White names receive 50 percent more callbacks for interviews. Callbacks are also more respon- sive to resume quality for White names than for African-American ones. The racial gap is uniform across occupation, industry, and employer size. We also find little evidence that employers are inferring social class from the names. Differential treatment by race still appears to still be prominent in the U.S. labor market."
+
+### Discussion
+
+Subject: Discrimination
+
+Broad question: Race and employment in the United States
+
+Specific question: Effect of racially-coded names on call-backs
+
+Preceptor Table: 
+  
+  * Units: individuals (or resumes ?) 
+  
+  * (Potential) Outcomes: call-back if black name, call-back if white name   
+  
+  * Causal/predictive: a causal model  
+  
+  * Covariates: sex, zip code (not shown in table)  
+  
+  * Treatment: black name on resume versus white name on resume 
+
+## Example Preceptor Table
+  
+```{r}
+tibble(ID = c("1", "2", "...", "10", "11", "...", "N"),
+       attitude_after_control = c("Yes*", "No", "...", "No*", "Yes*", "...", "Yes"),
+       attitude_after_treated = c("Yes", "Yes*", "...", "No", "Yes", "...", "No*"),
+       treatment = c("Black", "White", "...", "Black", "Black", "...", "White")) |>
+  
+  gt() |>
+  tab_header(title = "Preceptor Table") |> 
+  cols_label(ID = md("ID"),
+             attitude_after_control = md("Callback if White Name"),
+             attitude_after_treated = md("Callback if Black Name"),
+             treatment = md("Treatment")) |>
+  tab_style(cell_borders(sides = "right"),
+            location = cells_body(columns = c(ID))) |>
+  tab_style(style = cell_text(align = "left", v_align = "middle", size = "large"), 
+            locations = cells_column_labels(columns = c(ID))) |>
+  cols_align(align = "center", columns = everything()) |>
+  cols_align(align = "left", columns = c(ID)) |>
+  fmt_markdown(columns = everything()) |>
+  tab_spanner(label = "Potential Outcomes", columns = c(attitude_after_control, attitude_after_treated)) |>
+  tab_spanner(label = "Covariate", columns = c(treatment))
+```
+
+## Questions for Second Class
+
+<!-- There are no "right" answers. Each person/group might have a different goal . . . -->
+
+> What are the units, precisely?
+
+> What is the moment in time, precisely?
+
+> What is one reason why validity might not hold?
+
+<!-- Assume validity holds, and we can create the Population Table -->
+
+> Describe the Population Table in words
+
+> What is one reason why stability might not hold?
+
+> What is one reason why representativeness might not hold?
+
+> What is one reason why unconfoundedness might not hold?
+
+> Describe in words what the Preceptor Table would look like if we were trying to, instead, predict whether or not someone would get a callback?
+
+<!-- If time, load up and explore the data.  -->
+  

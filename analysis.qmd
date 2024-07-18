@@ -73,21 +73,47 @@ tibble(ID = c("1", "2", "...", "10", "11", "...", "N"),
 
 > What are the units, precisely?
 
+Resumes.
+All the people sending out resumes for entry-level positions in the US during 2020 -- 2030 who have names which are associated with a race. So, N is the hundreds of thousands (only people with specific names of races).
+
 > What is the moment in time, precisely?
 
+2020's
+
 > What is one reason why validity might not hold?
+
+- Biased sampling through targeting companies by sending specific resumes to each (biased data)
+- Real World Events (Black Lives Matter)
+- are still the names from 2004 black or white-coded?
+- resumes now look completely different to 2001
 
 <!-- Assume validity holds, and we can create the Population Table -->
 
 > Describe the Population Table in words
 
+The Population data is the data we want to have, the data which we actually have, and all the other data from that same population. It is combined with the Preceptor Table, data, other population data, and sources.
+
+every row: unit + time
+
 > What is one reason why stability might not hold?
+
+A real-world event or governmental regime in the US may have impacted the US since 2001 to 2024. There are many examples. Such can be the BLM, Democratic or Republican President, etc.
 
 > What is one reason why representativeness might not hold?
 
+No specific companies - lesser known companies
+Specific names?
+Boston cannot fully represent the US
+
 > What is one reason why unconfoundedness might not hold?
 
+The ambiguity of the treatment and the randomness of the treatment values.
+
+Resumes were sent to companies cannot be completely random. 
+
 > Describe in words what the Preceptor Table would look like if we were trying to, instead, predict whether or not someone would get a callback?
+
+We would not have a treatment column, and the data would be a lot more oriented towards being predictive towards the Nth ID.
 
 <!-- If time, load up and explore the data.  -->
   
